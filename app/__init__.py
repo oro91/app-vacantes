@@ -2,6 +2,7 @@ from flask import Flask
 from .models import db, Usuario
 import os
 from .routes.main_routes import main_bp
+from .routes.vacante_routes import vacante_bp
 
 def create_app():
     app = Flask(__name__)
@@ -25,4 +26,5 @@ def create_app():
             db.session.commit()
 
     app.register_blueprint(main_bp)
+    app.register_blueprint(vacante_bp)
     return app

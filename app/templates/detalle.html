@@ -7,15 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Departamento de Recursos Humanos - My Company</title>
-    
-    <!-- Bootstrap core CSS -->
+    <title>Detalle de la vacance - Ingeniero en procesos de inyeccion de plasticos</title>
+   <!-- Bootstrap core CSS -->
      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     
     <!-- Custom styles for this template -->
      <link href="{{ url_for('static', filename='css/justified-nav.css')}}" rel="stylesheet">
     
-
   </head>
 
   <body>
@@ -30,52 +28,31 @@
           <ul class="nav nav-justified">
             <li><a href="#">Inicio</a></li>            
             <li><a href="#">Administración</a></li>                        
-            <li><a href="{{ url_for('main.acerca') }}">Acerca</a></li>            
+            <li><a href="#">Acerca</a></li>            
           </ul>
         </nav>
       </div>
-      
-      <!-- Formulario para la busqueda. El formulario es enviado por POST al BusquedaController -->    
       <form method ="post" action="#" class="navbar-form navbar-right">
         <div class="form-group">
           <input type="text" name="query" required placeholder="Buscar oferta..." class="form-control">
         </div>        
         <button type="submit" class="btn btn-success">Buscar</button>
       </form>
-          
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h2>¡ENCUENTRA TU TRABAJO IDEAL!</h2>
-        <!--
-        <h4>ESTAMOS CONTRATANDO</h4>
-        -->
-        <p class="lead text-justify">Bienvenido a My Company, aquí podrás encontrar ofertas de empleos 
-          que sean adecuados a tu perfil, experiencia y ubicación. 
-          Es muy fácil de usar, solo haz clic en una vacante, ingresa para ver los detalles y envíanos tu CV en formato 
-          PDF o DOCX. Nosotros revisaremos tu CV y posteriormente te contactaremos.<br><br>
+      <br><br><br>
 
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Ver más Ofertas</a></p>                
-      </div>
-
-      <h1>Ofertas recientes</h1>
-
-     <!-- Example row of columns -->
-      <div class="row">
-        {% for vacante in vacantes %}
-        <div class="col-lg-4">
-          <h2> {{ vacante.nombre }}</h2>  
-         
-          <p class="text-danger text-justify">{{ vacante.descripcion[:150] }}</p>
-          <p class="text-justify"> {{ vacante.detalle[:150]}}</p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Numero de la vacante</h3>
         </div>
-        {% else %}
-        <div class="col-lg-12">
-            <p>No hay vacantes diponibles por el momento</p>
+        <div class="panel-body">
+          <h5><b>Vacante</b>: {{ vacante.nombre }}</h5>
+          <h5><b>Publicado</b>: {{ vacante.fecha_publicacion }}</h5>                             
+          <b>Descripción:</b><br>
+          <p class="text-justify">descripcion de la vacante</p>
+          <b>Detalles de la vacante</b>:<br>
+          {{ vacante.detalles }}
         </div>
-        {% endfor %}
-      </div>
-
+      </div>      
       <!-- Site footer -->
       <footer class="footer">
         <p>&copy; 2016 My Company, Inc.</p>
